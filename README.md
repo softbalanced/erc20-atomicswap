@@ -1,11 +1,11 @@
-# dash-atomic-swap
+# balanced-atomic-swap
 
-Library for creating atomic swaps transactions on the Dash blockchain
+Library for creating atomic swaps transactions on the Balanced blockchain
 
 ---
 # Demo Application
 
-This repository contains a simple demo application is the `/demo` directory. In this appication the initiator has Ethereum they would like to swap for Dash. 
+This repository contains a simple demo application is the `/demo` directory. In this appication the initiator has Ethereum they would like to swap for Balanced. 
 
 ## Starting the Demo Application
 
@@ -19,7 +19,7 @@ This repository contains a simple demo application is the `/demo` directory. In 
     npm run server
     ```
 
-1. Start [local Dash Node](#local-dash-node)    
+1. Start [local Balanced Node](#local-balanced-node)    
 
 Demo app will them be available at http://localhost:8080/
 
@@ -29,7 +29,7 @@ Demo app will them be available at http://localhost:8080/
 
 1. Ethereum
 
-     In this demo application, Ethereum is being swapped for Dash, so the application also communicates with an Ethereum blockchain. In this case, a smart contract that has been deployed to to the Ropsten test network. In order to use the demo app, you will need to interact with the Ropsten network via MetaMask.
+     In this demo application, Ethereum is being swapped for Balanced, so the application also communicates with an Ethereum blockchain. In this case, a smart contract that has been deployed to to the Ropsten test network. In order to use the demo app, you will need to interact with the Ropsten network via MetaMask.
 
     1. Install [MetaMask](https://metamask.io/)
 
@@ -41,19 +41,19 @@ Demo app will them be available at http://localhost:8080/
 
     2. Fund Initiator account
 
-        The initiator needs some Ether to swap for Dash, so their account will need to have some ether to swap. Copy the initiators address from metamask and go to the [Ropsten faucet](https://faucet.ropsten.be/) to get some ether.
+        The initiator needs some Ether to swap for Balanced, so their account will need to have some ether to swap. Copy the initiators address from metamask and go to the [Ropsten faucet](https://faucet.ropsten.be/) to get some ether.
 
    
 1. Local DASH Network
 
-    The demo application connects to a local Dash node either in [regtest mode](https://dashcore.readme.io/docs/core-examples-testing-applications#regtest-mode) or connected to [Testnet](https://dashcore.readme.io/docs/core-examples-testing-applications#testnet). The following instructions assume regtest mode.
+    The demo application connects to a local Balanced node either in [regtest mode](https://balancedcore.readme.io/docs/core-examples-testing-applications#regtest-mode) or connected to [Testnet](https://balancedcore.readme.io/docs/core-examples-testing-applications#testnet). The following instructions assume regtest mode.
 
-    1. Start your [local dash node](#local-dash-node)
+    1. Start your [local balanced node](#local-balanced-node)
 
     1. If this is the first time starting the node, you will need to initialize the blockchain so that funds are available and generate enough depth to activate the BIP9 softfork.
 
         ```
-        dash-cli -regtest generate 432
+        balanced-cli -regtest generate 432
         ```
 
     1. Generate DASH addresses and keys for the two parties in the swap.
@@ -63,7 +63,7 @@ Demo app will them be available at http://localhost:8080/
             1. Generate an address to receive the funds.
 
                 ```    
-                $ ./dash-cli -regtest getnewaddress
+                $ ./balanced-cli -regtest getnewaddress
 
                 yYu94PDiVRfpShg6pHrtQuPQT7fMno4eir
                 ```
@@ -71,7 +71,7 @@ Demo app will them be available at http://localhost:8080/
             2. Get the public key for this address
 
                 ```
-                ./dash-cli -regtest getaddressinfo yYu94PDiVRfpShg6pHrtQuPQT7fMno4eir
+                ./balanced-cli -regtest getaddressinfo yYu94PDiVRfpShg6pHrtQuPQT7fMno4eir
 
                 {
                   "address": "yYu94PDiVRfpShg6pHrtQuPQT7fMno4eir",
@@ -94,7 +94,7 @@ Demo app will them be available at http://localhost:8080/
             1. Get the private key for this address
 
                 ```
-                /dash-cli -regtest dumpprivkey yYu94PDiVRfpShg6pHrtQuPQT7fMno4eir
+                /balanced-cli -regtest dumpprivkey yYu94PDiVRfpShg6pHrtQuPQT7fMno4eir
 
                     cVAY2J3TFFfWtKUuYVkkPM74FKLgC4MmU9gGqxGpYjCLpqJe4JnP
                 ```
@@ -102,11 +102,11 @@ Demo app will them be available at http://localhost:8080/
             * The Participant
 
                 ```
-                    $ ./dash-cli -regtest getnewaddress
+                    $ ./balanced-cli -regtest getnewaddress
 
                         yXTPRzbFyXEA8VdbY8pohEYfw8T6QxeAsZ
 
-                    $ ./dash-cli -regtest getaddressinfo yXTPRzbFyXEA8VdbY8pohEYfw8T6QxeAsZ
+                    $ ./balanced-cli -regtest getaddressinfo yXTPRzbFyXEA8VdbY8pohEYfw8T6QxeAsZ
 
                         {
                           "address": "yXTPRzbFyXEA8VdbY8pohEYfw8T6QxeAsZ",
@@ -125,7 +125,7 @@ Demo app will them be available at http://localhost:8080/
                           ]
                         }
 
-                    $ ./dash-cli -regtest dumpprivkey yXTPRzbFyXEA8VdbY8pohEYfw8T6QxeAsZ
+                    $ ./balanced-cli -regtest dumpprivkey yXTPRzbFyXEA8VdbY8pohEYfw8T6QxeAsZ
 
                         cNTa8f54AiottaavKzd7sG7gnAkvrKwAMV3XW6tTsCVzQD4gH2od
                 ```
@@ -134,7 +134,7 @@ Demo app will them be available at http://localhost:8080/
 
 1. The initiator creates the first part of the swap
 
-    The initiator begins the swap by going to http://localhost:8080/initiator-create.html and locking some ether in a smart contract using a secret. They will then send the hash of that secret along and their Dash public key to the participant. 
+    The initiator begins the swap by going to http://localhost:8080/initiator-create.html and locking some ether in a smart contract using a secret. They will then send the hash of that secret along and their Balanced public key to the participant. 
 
 ![Swap Initiation page](doc/img/demo_initiate.gif)
 
@@ -146,10 +146,10 @@ Demo app will them be available at http://localhost:8080/
 
 ![P2SH address reveal page](doc/img/participant_create_pt2.png)
 
-4. The partcipant will then need to send the agreed amount of Dash to that address. For the sake of this example, this can be done on the command line:
+4. The partcipant will then need to send the agreed amount of Balanced to that address. For the sake of this example, this can be done on the command line:
 
     ```
-    $ ./dash-cli -regtest sendtoaddress 8hGQar8umTsc9MnGfJM5PiRrMiLrcaGKbQ 1
+    $ ./balanced-cli -regtest sendtoaddress 8hGQar8umTsc9MnGfJM5PiRrMiLrcaGKbQ 1
     
         6c6153ea5391f02cc6aff7fc5ab6e3eb66bbda66136f2bff294467bdcd0b18bf
     ```
@@ -157,7 +157,7 @@ Demo app will them be available at http://localhost:8080/
     A block must be mined in order to make those funds available:
 
     ```
-    # ./dash-cli -regtest generate 1
+    # ./balanced-cli -regtest generate 1
     
         [
             "63f7c9fc2654d7ef4b09c547a8e175cf2aef7d7153c486a098c6dbcf3051814f"
@@ -167,7 +167,7 @@ Demo app will them be available at http://localhost:8080/
 
 ![Participant Waiting Page](doc/img/participant_waiting.png)
 
-6. Now that the participant has locked some Dash into a contract the next step is for the initiator to withdraw it by going to http://localhost:8080/initiator-redeem.html. Doing so will reveal the secret to the participant.
+6. Now that the participant has locked some Balanced into a contract the next step is for the initiator to withdraw it by going to http://localhost:8080/initiator-redeem.html. Doing so will reveal the secret to the participant.
 
 ![Initiator Redeem Page](/doc/img/initiator_redeem.png)
 
@@ -178,13 +178,13 @@ Demo app will them be available at http://localhost:8080/
 8. After clicking redeem, we can generate another block and verify that the destination address has recevied funds.
 
 ```
-        $ ./dash-cli -regtest generate 1
+        $ ./balanced-cli -regtest generate 1
 
             [
                 "450acf115829174ed0e6924c7ee320a3fa242cc45b43ad3760b1fff4c359f866"
             ]
 
-        $ ./dash-cli -regtest getaddressbalance '{ "addresses": ["8hGQar8umTsc9MnGfJM5PiRrMiLrcaGKbQ"] }'
+        $ ./balanced-cli -regtest getaddressbalance '{ "addresses": ["8hGQar8umTsc9MnGfJM5PiRrMiLrcaGKbQ"] }'
 
             {
                 "balance": 0,
@@ -199,20 +199,20 @@ Demo app will them be available at http://localhost:8080/
 
 ![Ethereum Withdraw](doc/img/withdraw.gif)
 
-# Local Dash Node
+# Local Balanced Node
 
-The demo application needs a local dash node running in [regtest mode](https://dashcore.readme.io/docs/core-examples-testing-applications#regtest-mode). 
+The demo application needs a local balanced node running in [regtest mode](https://balancedcore.readme.io/docs/core-examples-testing-applications#regtest-mode). 
 
-**The credentials for accessing the local node need to match those in demo/dash_config.js for running the demo application.**
+**The credentials for accessing the local node need to match those in demo/balanced_config.js for running the demo application.**
 
 * Linux
     ```
-    > dashd -regtest -daemon -addressindex
-    Dash Core server starting
+    > balancedd -regtest -daemon -addressindex
+    Balanced Core server starting
     ```
 * MacOS
 
-    The Dash build of MacOS has [mining functions disabled](https://github.com/dashpay/dash/pull/3922). The Dockerfile in this project can be used to get a full node running.
+    The Balanced build of MacOS has [mining functions disabled](https://github.com/balancedpay/balanced/pull/3922). The Dockerfile in this project can be used to get a full node running.
 
     build with
 
@@ -223,5 +223,5 @@ The demo application needs a local dash node running in [regtest mode](https://d
     Run with 
 
         ```
-        docker run -d -p 19898:19898 -p 19899:19899 -v "$HOME/Library/Application Support/DashCore/dash.conf:/root/.dashcore/dash.conf" --name dash_node atomic_swap
+        docker run -d -p 19898:19898 -p 19899:19899 -v "$HOME/Library/Application Support/BalancedCore/balanced.conf:/root/.balancedcore/balanced.conf" --name balanced_node atomic_swap
     ```
