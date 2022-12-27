@@ -225,3 +225,9 @@ The demo application needs a local balanced node running in [regtest mode](https
         ```
         docker run -d -p 19898:19898 -p 19899:19899 -v "$HOME/Library/Application Support/BalancedCore/balanced.conf:/root/.balancedcore/balanced.conf" --name balanced_node atomic_swap
     ```
+    
+# Support
+
+If you like my work, feel free to support it!
+
+XMR 47o95rpZcEAZzTMr52T7ye9ZBecPojT6wYQsgqgHggqwMx6jRTez7mhSosATYWZGQ1a3PMYFtoubYA5rWrCcTwvvULwfPWd
